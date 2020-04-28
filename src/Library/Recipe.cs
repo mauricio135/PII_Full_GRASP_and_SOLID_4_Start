@@ -15,8 +15,13 @@ namespace Full_GRASP_And_SOLID
 
         public Product FinalProduct { get; set; }
 
-        public void AddStep(Step step)
+        //Utilizamos Creator para quitar la creación de la instancia Step, en Program,
+        //porque es más adecuado que la cree Recipe (mediante el nuevo método AddStep)
+
+        //El comportamiento no varía con respecto a la implementación original
+        public void AddStep(Product input, double quantity, Equipment equipment, int time)
         {
+            Step step = new Step (input, quantity, equipment, time);
             this.steps.Add(step);
         }
 
